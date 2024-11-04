@@ -7,28 +7,28 @@
   font-family: "Space Mono";
   font-weight: 400;
   font-style: normal;
-  src: url(/wp-content/themes/natmota/assets/fonts/SpaceMono-Regular.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/SpaceMono-Regular.ttf);
 }
 @font-face {
   font-display: swap;
   font-family: "Space Mono";
   font-weight: 400;
   font-style: italic;
-  src: url(/wp-content/themes/natmota/assets/fonts/SpaceMono-Italic.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/SpaceMono-Italic.ttf);
 }
 @font-face {
   font-display: swap;
   font-family: "Space Mono";
   font-weight: 700;
   font-style: normal;
-  src: url(/wp-content/themes/natmota/assets/fonts/SpaceMono-Bold.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/SpaceMono-Bold.ttf);
 }
 @font-face {
   font-display: swap;
   font-family: "Space Mono";
   font-weight: 700;
   font-style: italic;
-  src: url(/wp-content/themes/natmota/assets/fonts/SpaceMono-BoldItalic.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/SpaceMono-BoldItalic.ttf);
 }
 /* Poppins font-face declarations */
 @font-face {
@@ -36,32 +36,29 @@
   font-family: "Poppins";
   font-weight: 400;
   font-style: normal;
-  src: url(/wp-content/themes/natmota/assets/fonts/Poppins-Regular.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/Poppins-Regular.ttf);
 }
 @font-face {
   font-display: swap;
   font-family: "Poppins";
   font-weight: 400;
   font-style: italic;
-  src: url(/wp-content/themes/natmota/assets/fonts/Poppins-Italic.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/Poppins-Italic.ttf);
 }
 @font-face {
   font-display: swap;
   font-family: "Poppins";
   font-weight: 700;
   font-style: normal;
-  src: url(/wp-content/themes/natmota/assets/fonts/Poppins-Bold.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/Poppins-Bold.ttf);
 }
 @font-face {
   font-display: swap;
   font-family: "Poppins";
   font-weight: 700;
   font-style: italic;
-  src: url(/wp-content/themes/natmota/assets/fonts/Poppins-BoldItalic.ttf);
+  src: url(/wp-content/themes/nathalie_mota/assets/fonts/Poppins-BoldItalic.ttf);
 }
-/**************/
-/*** Header ***/
-/**************/
 .navBar {
   display: flex;
   max-width: 1440px;
@@ -208,6 +205,123 @@
   100% {
     transform: scale(1, 1);
     letter-spacing: normal;
+  }
+}
+.hiddenPopup {
+  display: none;
+  visibility: hidden;
+}
+
+.popup-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+.popup-overlay .popup-contact {
+  position: relative;
+  background: white;
+  width: 597px;
+  height: 769px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  border: 5px solid #000000;
+}
+.popup-overlay .popup-contact .popup-title {
+  display: flex;
+  width: 593px;
+  justify-content: center;
+  padding-top: 15px;
+}
+.popup-overlay .popup-contact .popup-title .popup-img {
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+#wpcf7-f70-o1 {
+  padding-top: 30px;
+}
+
+.popup-informations {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+.popup-informations p {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.1rem 0 0 0;
+}
+
+#menu-ref-photo select option[value=""] {
+  display: none;
+}
+
+.inputPopup,
+.textareaPopup {
+  width: 263px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid rgb(184, 187, 194);
+  background-color: rgb(255, 255, 255);
+}
+
+.textareaPopup {
+  height: 210px;
+}
+
+.popup-contact input[type=submit] {
+  background: rgb(216, 216, 216);
+  border-radius: 2px;
+  width: 263px;
+  height: 50px;
+  border: none;
+  box-shadow: none;
+}
+
+.wpcf7 form .wpcf7-response-output {
+  margin: 0;
+}
+
+@media (max-width: 767px) {
+  .popup-overlay .popup-contact {
+    max-width: 286px;
+    height: 583px;
+    border: 3px solid #000000;
+  }
+  .popup-overlay .popup-contact .popup-title {
+    width: 286px;
+  }
+  #wpcf7-f70-o1 {
+    padding-top: 0px;
+  }
+  .popup-informations p {
+    margin: 0.7rem 0 0 0;
+    padding: 0 2.8rem;
+  }
+  .inputPopup,
+  .textareaPopup {
+    width: 190px;
+    height: 40px;
+  }
+  .textareaPopup {
+    height: 149px;
+  }
+  .popup-contact input[type=submit] {
+    width: 190px;
+    margin-top: 10px;
+    margin-bottom: 0px;
   }
 }
 body {
