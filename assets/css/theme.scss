@@ -3,3 +3,30 @@
 }
 
 @import "fonts";
+
+@import "header-footer";
+
+@import "animations";
+
+body {
+  max-width: 1440px;
+  height: 100%;
+  margin: 0 auto;
+  font-family: "Space Mono", monospace, Arial, Helvetica, sans-serif;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: calc(100vh - 160px);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 10px auto;
+}
