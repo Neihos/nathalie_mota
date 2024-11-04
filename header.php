@@ -22,7 +22,19 @@
 			wp_nav_menu(array('theme_location' => 'main')); 
 		  ?>
     </div>
-    
+
+    <div class="burgerMenu">
+      <img class="burgerIcon" src="<?php echo get_template_directory_uri(); ?>/assets/images/burgerIcone.svg" alt="icone burger menu">
+      <img class="crossIcon hiddenNow" src="<?php echo get_template_directory_uri(); ?>/assets/images/crossIcone.svg" alt="Icone croix">
+    </div>
+  </nav>
+
+  <div class="burger-menu">
+    <?php
+			wp_nav_menu(array('theme_location' => 'main')); 
+		  ?>
+  </div>
+
 </header>
 
 <body <?php body_class(); ?>>
