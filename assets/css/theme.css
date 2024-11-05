@@ -523,6 +523,35 @@
        object-fit: cover;
   }
 }
+/**********************/
+/****** Home page *****/
+/**********************/
+.hero_header {
+  display: flex;
+  aspect-ratio: 1440/962;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  margin: 0;
+}
+.hero_header h1 {
+  font-weight: 700;
+  font-size: clamp(4rem, 1.714rem + 4.762vw, 6rem);
+  font-style: italic;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 2px rgb(255, 255, 255);
+}
+
+@media (max-width: 767px) {
+  .hero_header h1 {
+    font-size: clamp(1.7rem, -0.5rem + 9.388vw, 4rem);
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+  }
+}
 body {
   max-width: 1440px;
   height: 100%;
