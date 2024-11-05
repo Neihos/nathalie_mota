@@ -19,9 +19,17 @@ include('template_parts/template/infos_photos.php');
     <?php
     // Récupérer l'URL de la photo aléatoire
     $random_photo_url = get_random_photo();
+    // Récupérer les photos pour faire la galerie d'images
+    $home_photos_display = photoDisplay_event();
     ?>
     <section class="hero_header" style="background-image: url('<?php echo $random_photo_url; ?>');">
         <h1>Photograph Event</h1>
+    </section>
+
+    <section class="homePhotos">
+        <div class="photoContainer">        
+            <?php echo $home_photos_display; ?>
+        </div>
     </section>
     
 </div>
