@@ -324,6 +324,205 @@
     margin-bottom: 0px;
   }
 }
+.single-container {
+  max-width: 100%;
+  min-height: calc(100vh - 167px);
+  padding-left: clamp(4.375rem, -1.0536rem + 11.3095vw, 9.125rem);
+  padding-right: clamp(4.375rem, -1.0536rem + 11.3095vw, 9.125rem);
+}
+
+.preview-photo {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 38px;
+}
+.preview-photo .photoOnTop {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.preview-photo .photoOnTop .single-content {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: flex-end;
+  text-transform: uppercase;
+  padding-bottom: 35px;
+  line-height: 2.5;
+  font-size: 14px;
+}
+.preview-photo .photoOnTop .single-content .post-title {
+  width: clamp(18.75rem, 10.1786rem + 17.8571vw, 26.25rem);
+  font-size: clamp(3.3rem, 1.8571rem + 2.381vw, 4rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1;
+}
+.preview-photo .photoOnTop .preview__picture {
+  display: flex;
+  align-items: end;
+  width: 100%;
+}
+.preview-photo .photoOnTop .preview__picture img {
+  width: 100%;
+  height: auto;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.contactSlider {
+  display: flex;
+  width: 100%;
+  gap: 20px;
+}
+.contactSlider .btnPhotoInteress {
+  display: flex;
+  height: 123px;
+  width: 100%;
+  border-top: 1px solid rgb(0, 0, 0);
+}
+.contactSlider .btnPhotoInteress .btnText {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  font-size: 0.9rem;
+  font-family: "poppins", monospace, Arial, Helvetica, sans-serif;
+}
+.contactSlider .btnPhotoInteress .btnText .contactPhoto {
+  max-width: 272px;
+  width: 100%;
+  height: 50px;
+  border-radius: 2px;
+  border: none;
+  background: rgb(216, 216, 216);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+.contactSlider .btnPhotoInteress .btnText .contactPhoto:hover {
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 0);
+  transform: translateY(-3px);
+  box-shadow: 0 2px 1px 0 rgba(0, 0, 0, 0.02);
+}
+.contactSlider .sliderContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: column;
+  height: 123px;
+  width: 100%;
+  padding: 10px 0;
+}
+.contactSlider .sliderContainer .changeImg {
+  width: 81px;
+  height: 100%;
+  align-self: flex-end;
+}
+.contactSlider .sliderContainer .changeImg img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 81px;
+  height: 71px;
+}
+.contactSlider .sliderContainer .arrows {
+  display: flex;
+  width: 81px;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+.likeToo {
+  width: 100%;
+  border-top: 1px solid black;
+  padding-top: 40px;
+}
+.likeToo h3 {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: uppercase;
+  justify-content: flex-start;
+}
+.likeToo .containerLikeToo {
+  display: flex;
+  width: 100%;
+  margin: 40px 0 100px 0;
+  justify-content: space-between;
+  gap: 20px;
+}
+.likeToo .containerLikeToo .photoLikeToo {
+  flex: 1;
+  max-width: calc((100% - 20px) / 2);
+  aspect-ratio: 564/495;
+}
+.likeToo .containerLikeToo .photoLikeToo img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .single-container {
+    padding: 0px;
+  }
+  .preview-photo {
+    padding-top: 15px;
+  }
+  .preview-photo .photoOnTop {
+    flex-direction: column-reverse;
+    padding: 0 56px;
+  }
+  .preview-photo .photoOnTop .single-content h1 {
+    margin: 0.5rem 0;
+    font-size: 46px;
+  }
+  .preview-photo .contactSlider {
+    height: 130px;
+  }
+  .preview-photo .contactSlider .btnPhotoInteress {
+    justify-content: center;
+    padding: 0 56px;
+  }
+  .preview-photo .contactSlider .btnPhotoInteress .btnText {
+    display: block;
+    width: auto;
+  }
+  .preview-photo .contactSlider .btnPhotoInteress .btnText .contactPhoto {
+    width: 263px;
+  }
+  .preview-photo .contactSlider .sliderContainer {
+    display: none;
+  }
+  .likeToo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px 29px;
+  }
+  .likeToo h3 {
+    text-align: center;
+  }
+  .likeToo .containerLikeToo {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+  .likeToo .containerLikeToo .photoLikeToo {
+    max-width: 100%;
+    aspect-ratio: 564/495;
+  }
+  .likeToo .containerLikeToo .photoLikeToo img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
 body {
   max-width: 1440px;
   height: 100%;
