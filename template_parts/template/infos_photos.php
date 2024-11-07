@@ -1,4 +1,7 @@
 <?php 
+// =================================================================================================================
+//                                                  Page single-photo 
+// =================================================================================================================
 
 // Récupérer les catégories associées
 $categories = get_the_terms(get_the_ID(), 'categorie');
@@ -29,6 +32,7 @@ $photo_posts = get_posts(array(
     'order' => 'ASC'
 ));
 
+// Déclarer les variables pour la gestion des photos
 $first_post = $photo_posts[0] ?? null;
 $previous_post = get_previous_post();
 $next_post = get_next_post();
@@ -74,66 +78,6 @@ if ($current_cat_id) {
             ),
         ),
     ));
-}
-
-// Fonction pour récupérer une photographie aléatoire
-function get_random_photo() {
-    $random_photo_query = new WP_Query(array(
-        'post_type' => 'photo',
-        'posts_per_page' => 1,
-        'orderby' => 'rand',
-    ));
-    
-    if ($random_photo_query->have_posts()) {
-        while ($random_photo_query->have_posts()) {
-            $random_photo_query->the_post();
-            $random_photographie = get_field('photographie');
-            if (!empty($random_photographie['sizes'])) {
-                $random_image_url = $random_photographie['sizes']['full'] ?? $random_photographie['sizes']['large'] ?? $random_photographie['sizes']['medium'] ?? $random_photographie['sizes']['thumbnail'] ?? $random_photographie['url'];
-                wp_reset_postdata();
-                return esc_url($random_image_url);
-            }
-        }
-    }
-    wp_reset_postdata();
-    return null;
-}
-
-// Fonction pour gérer les photo de la page d'accueil
- function photoDisplay_event() {
-    $home_photo_query = new WP_Query(array(
-        'post_type' => 'photo',
-        'posts_per_page' => 8,
-        'orderby' => 'ASC',
-    ));
-
-    $photos_html = ''; // Variable pour stocker le code HTML des images
-
-    if ($home_photo_query->have_posts()) {
-        while ($home_photo_query->have_posts()) {
-            $home_photo_query->the_post();
-            $home_photographie = get_field('photographie');
-
-            if (!empty($home_photographie['sizes'])) {
-                // Sélectionne la meilleure qualité disponible
-                $home_image_url = $home_photographie['sizes']['full'] ?? 
-                                  $home_photographie['sizes']['large'] ?? 
-                                  $home_photographie['sizes']['medium'] ?? 
-                                  $home_photographie['sizes']['thumbnail'] ?? 
-                                  $home_photographie['url'];
-
-                if ($home_image_url) {
-                    // Crée le code HTML pour chaque image
-                    $photos_html .= '<div class="homePhoto-item">';
-                    $photos_html .= '<img src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '">';
-                    $photos_html .= '</div>';
-                }
-            }
-        }
-        wp_reset_postdata(); // Appelé une fois seulement, après la boucle
-    }
-
-    return $photos_html; // Retourne le code HTML des images
 }
 
 ?>

@@ -1,28 +1,11 @@
+// =================================================================================================================
+//                                                    single-photo
+// =================================================================================================================
+
+//  ----->  Gestion du slider  <-----
+
 // Démarrage de jQuery
 jQuery(document).ready(function ($) {
-
-  /*********************************************/
-  /***** Récupérer la référence des photos *****/
-  /*********************************************/
-
-  const ref = $(".reference");
-
-  function getRef_event() {
-    if (ref.length) {
-      // Vérifie si l'élément existe
-      // Récupère le texte entier, puis extrait uniquement la valeur après "Référence : "
-      const referenceText = ref.text().trim();
-      const referenceValue = referenceText.replace("Référence : ", "").trim();
-
-      // Insère uniquement la valeur extraite dans le champ
-      $("#menu-ref-photo").val(referenceValue);
-    }
-  }
-  getRef_event();
-
-  /**********************************************************/
-  /***** Zone photos apparentées class= sliderContainer *****/
-  /**********************************************************/
 
   // Sélectionner les flèches et récupérer les images à utiliser
   const arrow_left = $(".arrow-left");
@@ -30,11 +13,12 @@ jQuery(document).ready(function ($) {
   const img_previous = $(".previousImg");
   const img_next = $(".nextImg");
 
-  /** -->Fonction pour gérer les événements sur la flèche gauche<-- **/
+  //  ----->  Fonction pour gérer les événements sur la flèche gauche  <-----
   function arrow_left_event() {
     arrow_left.click(function () {
       let previousPostUrl = $(this).data("previous");
       const lastPostUrl = $(this).data("last");
+      console.log(previousPostUrl)
 
       // Redirige vers le dernier post si on est au début de la série
       if (previousPostUrl === "#") {
@@ -55,7 +39,7 @@ jQuery(document).ready(function ($) {
   }
   arrow_left_event();
 
-  /** -->Fonction pour gérer les événements sur la flèche droite<-- **/
+  //  ----->  Fonction pour gérer les événements sur la flèche droite  <-----
 
   function arrow_right_event() {
     arrow_right.click(function () {

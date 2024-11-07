@@ -12,7 +12,7 @@
 get_header(); 
 
 // Inclure le fichier avec les données photo
-include('template_parts/template/infos_photos.php');
+include('template_parts/template/home_photos.php');
 ?>
 
 <div class="main-container">
@@ -26,11 +26,25 @@ include('template_parts/template/infos_photos.php');
         <h1>Photograph Event</h1>
     </section>
 
+    <section class="selectBy">
+        <div class="allSelect">
+            <div class="cat_form">
+                <select name="categories" id="categories"><option value="">Catégories</option></select>
+                <select name="formats" id="formats"><option value="">Formats</option></select>
+            </div>
+                <select name="trie" id="trie"><option value="">Trier par</option></select>
+        </div>            
+    </section>
+
     <section class="homePhotos">
-        <div class="photoContainer">        
+        <div class="photoContainer">     
             <?php echo $home_photos_display; ?>
         </div>
     </section>
+
+    <div class="btnload">
+        <button id="loadMorePhotos">Charger plus</button>
+    </div>
     
 </div>
 
