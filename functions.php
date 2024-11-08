@@ -6,6 +6,12 @@ include get_template_directory() . '/include/functions_api_rest.php';
 // Enregistrement des styles CSS du thème avec filemtime pour contrôler le cache
 function natmota_enqueue_styles() {
     wp_enqueue_style('natmota-theme-style', get_template_directory_uri() . '/assets/css/theme.css', array(), filemtime(get_template_directory() . '/assets/css/theme.css'));
+    wp_enqueue_style(
+        'select2-css', // Un identifiant unique pour ce style
+        'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', // Lien vers le CSS de Select2
+        array(), // Pas de dépendance pour le CSS
+        '4.1.0-rc.0' // Version du style
+    );
 }
 
 // Enregistrement des fichiers JS avec filemtime et chargement en pied de page
@@ -28,6 +34,15 @@ function natmota_enqueue_scripts() {
             true // Chargement en pied de page
         );
     }
+
+    // Ajout de Select2 séparément avec sa dépendance jQuery
+    wp_enqueue_script(
+        'select2-js', // Un identifiant unique pour ce script
+        'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', // Lien vers la bibliothèque Select2
+        array('jquery'), // Dépendance à jQuery
+        '4.1.0-rc.0', // Version du script
+        true // Chargement en pied de page
+    );
 
     // Localisation de l'URL AJAX et de l'URL REST après l'enregistrement des scripts
     wp_localize_script('natmota-script-main', 'natmota_js', array(

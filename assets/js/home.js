@@ -23,7 +23,8 @@ jQuery(document).ready(function ($) {
         success: function (response) {
           if (response == 0) {
             // Fin du contenu
-            $(".btnload").html("<p>Aucune autre photo disponible</p>");
+            $(".btnload").html('<button id="loadMorePhotos">Fin de la liste</button>');
+            $("#loadMorePhotos").prop("disabled", true);
           } else {
             // Ajoute les nouvelles photos à la fin du conteneur
             $(".photoContainer").append(response);
@@ -34,11 +35,9 @@ jQuery(document).ready(function ($) {
       });
     }
   });
-});
 
-// ----->  Récupére les termes des taxonomies pour reseigner les champs de tri  <-----
+  // ----->  Récupére les termes des taxonomies pour reseigner les champs de tri  <-----
 
-jQuery(document).ready(function ($) {
   // Récupère les termes de la taxonomie "format"
   $.ajax({
     url: natmota_js.rest_url + "format",
@@ -48,7 +47,7 @@ jQuery(document).ready(function ($) {
         $("#formats").empty();
 
         // Ajoute une option par défaut pour inclure tous les formats
-        $("#formats").append(`<option value="">Tous les formats</option>`);
+        $("#formats").append(`<option value="">Formats</option>`);
 
         response.forEach((term) => {
           $("#formats").append(
@@ -74,7 +73,7 @@ jQuery(document).ready(function ($) {
 
         // Ajoute une option par défaut pour inclure toutes les catégories
         $("#categories").append(
-          `<option value="">Toutes les catégories</option>`
+          `<option value="">Catégories</option>`
         );
 
         response.forEach((term) => {
