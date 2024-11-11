@@ -688,8 +688,12 @@
   background-color: rgb(255, 214, 214); /* Couleur de fond au survol */
   color: rgb(49, 49, 68);
 }
-.select2-container .select2-dropdown .select2-results__option[aria-selected=true]:not(:hover) {
+.select2-container .select2-dropdown .select2-results__option:active {
   background-color: rgb(254, 88, 88); /* Couleur de fond pour sélection quand non survolée */
+  color: rgb(49, 49, 68); /* Couleur du texte */
+}
+.select2-container .select2-dropdown .select2-results__option[aria-selected=true]:not(:hover) {
+  background-color: rgb(224, 0, 0); /* Couleur de fond pour sélection quand non survolée */
   color: rgb(49, 49, 68); /* Couleur du texte */
 }
 

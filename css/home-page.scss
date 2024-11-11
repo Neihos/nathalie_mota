@@ -165,9 +165,13 @@
       &:hover {
         background-color: rgba(255, 214, 214, 1); /* Couleur de fond au survol */
         color: rgba(49, 49, 68, 1);
-      }    
+      }  
+      &:active {
+        background-color: rgba(254, 88, 88, 1) ; /* Couleur de fond pour sélection quand non survolée */
+        color: rgba(49, 49, 68, 1); /* Couleur du texte */
+      }  
       &[aria-selected="true"]:not(:hover) {
-        background-color: rgba(254, 88, 88, 1); /* Couleur de fond pour sélection quand non survolée */
+        background-color: rgba(224, 0, 0, 1); /* Couleur de fond pour sélection quand non survolée */
         color: rgba(49, 49, 68, 1); /* Couleur du texte */
       }
     }

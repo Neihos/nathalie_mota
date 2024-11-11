@@ -4,13 +4,16 @@ function load_more_photos_ajax() {
     // Vérifie la page de la requête Ajax
     $paged = (isset($_POST['page'])) ? $_POST['page'] : 2;
     $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
+    $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
+    $sort = isset($_POST['sort']) ? sanitize_text_field($_POST['sort']) : '';
 
-    $home_photo_query = new WP_Query(array(
+    $args = array(
         'post_type' => 'photo',
         'posts_per_page' => 8,
         'paged' => $paged,
-        'orderby' => 'DESC',
-    ));
+        'orderby' => 'date',
+        'order' => 'DESC',
+    );
 
     if (!empty($format)) {
         $args['tax_query'][] = array(
@@ -19,6 +22,25 @@ function load_more_photos_ajax() {
             'terms'    => array($format),
         );
     }
+
+    if (!empty($category)) {
+        $args['tax_query'][] = array(
+            'taxonomy' => 'categorie',
+            'field'    => 'slug',
+            'terms'    => array($category),
+        );
+    }
+
+    if ($sort == '1') {
+        $args['orderby'] = 'date';
+        $args['order'] = 'DESC';
+    } elseif ($sort == '2') {
+        $args['orderby'] = 'date';
+        $args['order'] = 'ASC';
+    }
+
+    // Exécute la requête
+    $home_photo_query = new WP_Query($args);
 
     if ($home_photo_query->have_posts()) {
         while ($home_photo_query->have_posts()) {
