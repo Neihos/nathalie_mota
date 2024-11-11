@@ -75,7 +75,7 @@
 
 .selectBy {
   display: flex;
-  max-width: 1148px;
+  max-width: clamp(40rem, 3.714rem + 75.595vw, 71.75rem);
   width: 100%;
   justify-content: center;
   margin: 50px auto 0 auto;
@@ -85,7 +85,6 @@
     height: 60px;
     justify-content: space-between;
     align-items: center;
-    padding: auto 20px;
     .select2-container .select2-selection--single {
       display: flex;
       align-items: center;
@@ -104,10 +103,6 @@
       &:hover {
         border: 1.3px solid rgba(33, 90, 255, 1);
       }
-    }
-    select {
-      width: 260px;
-      background-color: rgba(255, 255, 255, 1);
     }
     .cat_form {
       display: flex;
@@ -142,11 +137,19 @@
   }
 }
 
+.homeSelect {
+  width: 240px;
+  background-color: rgba(255, 255, 255, 1);
+}
+
 .select2-arrow-rotated {
   transform: rotate(-180deg);
 }
 
 .select2-container {
+  .select2-selection--single {
+    width: 240px;
+  }
   .select2-dropdown {
     border: none;
     border-radius: 8px;
@@ -193,6 +196,14 @@
   }
 }
 
+@media (max-width: 980px) {
+  .selectBy .allSelect {
+    flex-direction: column;
+    height: 110px;
+    margin-bottom: 30px;
+  }
+}
+
 @media (max-width: 767px) {
   .hero_header h1 {
     font-size: clamp(1.7rem, -0.5rem + 9.388vw, 4rem);
@@ -202,9 +213,23 @@
   .homePhotos .photoContainer {
     flex-direction: column;
     padding: 0 29px;
-    .homePhoto-item {
+    .homePhoto-item a {
       width: 100%;
       height: clamp(17.438rem, -3.07rem + 87.5vw, 38.875rem);
+    }
+  }
+  .selectBy {
+    margin: 40px auto;
+    .allSelect {
+      height: 100px;
+      .select2-container .select2-selection--single {
+        margin-bottom: 10px;
+      }
+
+      .cat_form {
+        gap: 0;
+        flex-direction: column;
+      }
     }
   }
 }

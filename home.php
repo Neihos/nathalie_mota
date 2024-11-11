@@ -29,10 +29,10 @@ include('template_parts/template/home_photos.php');
     <section class="selectBy">
         <div class="allSelect">
             <div class="cat_form">
-                <select class="js-example-basic-multiple" name="categories" id="categories"><option value="">Catégories</option></select>
-                <select class="js-example-basic-multiple" name="formats" id="formats"><option value="">Formats</option></select>
+                <select class="homeSelect js-example-basic-multiple" name="categories" id="categories"><option value="">Catégories</option></select>
+                <select class="homeSelect js-example-basic-multiple" name="formats" id="formats"><option value="">Formats</option></select>
             </div>
-                <select class="js-example-basic-multiple" name="trie" id="trie">
+                <select class="homeSelect js-example-basic-multiple" name="trie" id="trie">
                     <option value="1" selected>Trier par</option>
                     <option value="1">Plus récents</option>
                     <option value="2">Plus anciens</option>
