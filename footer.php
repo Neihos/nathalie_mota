@@ -7,7 +7,7 @@
 
     <?php
     // Ajoute la modale si l'on clique sur contact
-     get_template_part( 'template_parts/modale' );
+     get_template_part( 'template_parts/template/modale' );
     ?>
 
 </footer>

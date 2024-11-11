@@ -12,7 +12,7 @@
 get_header(); 
 
 // Inclure le fichier avec les données photo
-include('template_parts/template/home_photos.php');
+include('template_parts/home_photos.php');
 ?>
 
 <div class="main-container">

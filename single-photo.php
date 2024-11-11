@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-<?php include('template_parts/template/infos_photos.php'); ?>
+<?php include('template_parts/infos_photos.php'); ?>
 
 <main class="single-container">
 
