@@ -34,7 +34,7 @@
     width: 100%;
     margin: 20px auto;
     justify-content: center;
-    .homePhoto-item {
+    .homePhoto-item a {
       display: flex;
       aspect-ratio: 564 / 495;
       width: clamp(19.5rem, 1.5rem + 37.5vw, 35.25rem);
@@ -161,17 +161,32 @@
       }
       &:first-child {
         visibility: hidden; /* Cache le premier enfant */
-      }      
+      }
       &:hover {
-        background-color: rgba(255, 214, 214, 1); /* Couleur de fond au survol */
+        background-color: rgba(
+          255,
+          214,
+          214,
+          1
+        ); /* Couleur de fond au survol */
         color: rgba(49, 49, 68, 1);
-      }  
+      }
       &:active {
-        background-color: rgba(254, 88, 88, 1) ; /* Couleur de fond pour sélection quand non survolée */
+        background-color: rgba(
+          254,
+          88,
+          88,
+          1
+        ); /* Couleur de fond pour sélection quand non survolée */
         color: rgba(49, 49, 68, 1); /* Couleur du texte */
-      }  
+      }
       &[aria-selected="true"]:not(:hover) {
-        background-color: rgba(224, 0, 0, 1); /* Couleur de fond pour sélection quand non survolée */
+        background-color: rgba(
+          224,
+          0,
+          0,
+          1
+        ); /* Couleur de fond pour sélection quand non survolée */
         color: rgba(49, 49, 68, 1); /* Couleur du texte */
       }
     }

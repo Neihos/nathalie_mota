@@ -561,13 +561,13 @@
   margin: 20px auto;
   justify-content: center;
 }
-.homePhotos .photoContainer .homePhoto-item {
+.homePhotos .photoContainer .homePhoto-item a {
   display: flex;
   aspect-ratio: 564/495;
   width: clamp(19.5rem, 1.5rem + 37.5vw, 35.25rem);
   height: auto;
 }
-.homePhotos .photoContainer .homePhoto-item img {
+.homePhotos .photoContainer .homePhoto-item a img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;

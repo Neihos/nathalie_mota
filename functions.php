@@ -23,6 +23,7 @@ function natmota_enqueue_scripts() {
         'natmota-script-modale' => 'modale.js',
         'natmota-script-home' => 'home.js',
         'natmota-script-single-photo' => 'single-photo.js',
+        'natmota-script-lightbox' => 'lightbox.js',
     ];
 
     foreach ($scripts as $handle => $file) {

@@ -58,7 +58,9 @@ function load_more_photos_ajax() {
                 if ($home_image_url) {
                     // Génère le code HTML pour chaque image
                     echo '<div class="homePhoto-item">';
+                    echo '<a href=" ' . get_permalink(get_the_ID()) . '" target="">';
                     echo '<img src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '">';
+                    echo '</a>';
                     echo '</div>';
                 }
             }

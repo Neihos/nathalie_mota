@@ -40,6 +40,7 @@ function photoDisplay_event() {
 
     $photos_html = ''; // Variable pour stocker le code HTML des images
     $displayed_images = []; // Tableau pour stocker les URLs des images déjà affichées
+    $item_post_url = ""; // Variable pour stocker les URLs des posts 
 
     if ($home_photo_query->have_posts()) {
         while ($home_photo_query->have_posts()) {
@@ -61,7 +62,9 @@ function photoDisplay_event() {
 
                     // Crée le code HTML pour chaque image
                     $photos_html .= '<div class="homePhoto-item">';
+                    $photos_html .= '<a href=" ' . get_permalink(get_the_ID()) . '" target="">'; // Récupère l'URL du post
                     $photos_html .= '<img src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '">';
+                    $photos_html .= '</a>';
                     $photos_html .= '</div>';
                 }
             }
