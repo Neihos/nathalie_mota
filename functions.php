@@ -49,7 +49,10 @@ function natmota_enqueue_scripts() {
     wp_localize_script('natmota-script-main', 'natmota_js', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'rest_url' => esc_url(rest_url('wp/v2/')), // Ajout de l'URL de l'API REST de photo
-        'nonce'    => wp_create_nonce('natmota-script-main')
+        'nonce'    => wp_create_nonce('natmota-script-main'),
+        // Ajout des URLs des icônes
+        'eye_icon' => get_template_directory_uri() . '/assets/images/eye.svg',
+        'square_icon' => get_template_directory_uri() . '/assets/images/square.svg'
     ));
 }
 

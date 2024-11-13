@@ -47,6 +47,8 @@ function photoDisplay_event() {
             $home_photographie = get_field('photographie');
             $reference = get_field('reference'); // Récupère la référence via ACF
             $categories = get_the_terms(get_the_ID(), 'categorie'); // Récupère la catégorie
+            $post_link = get_permalink(get_the_ID()); // Récupère le lien vers la page du post associé à l'image
+
 
             // Convertit les catégories en une liste séparée par des virgules
             $category_names = [];
@@ -72,7 +74,12 @@ function photoDisplay_event() {
 
                     // Crée le code HTML pour chaque image avec les attributs data
                     $photos_html .= '<div class="homePhoto-item">';
-                    $photos_html .= '<img class="lightbox-target" src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '" data-fullsize="' . esc_url($home_photographie['url']) . '" data-category="' . esc_attr($category_list) . '" data-reference="' . esc_attr($reference) . '">';
+                    $photos_html .= '<img class="lightbox-target"  src="' . esc_url($home_image_url) . '"
+                                                                   alt="' . esc_attr(get_the_title()) . '" 
+                                                                   data-fullsize="' . esc_url($home_photographie['url']) . '" 
+                                                                   data-category="' . esc_attr($category_list) . '" 
+                                                                   data-reference="' . esc_attr($reference) . '" 
+                                                                   data-link="' . esc_url($post_link) . '">';
                     $photos_html .= '</div>';
                 }
             }

@@ -47,6 +47,7 @@ function load_more_photos_ajax() {
             $home_photographie = get_field('photographie');
             $reference = get_field('reference'); // Récupère la référence via ACF
             $categories = get_the_terms(get_the_ID(), 'categorie'); // Récupère la catégorie
+            $post_link = get_permalink(get_the_ID());; // Récupère le lien de la page
 
             // Convertit les catégories en une liste séparée par des virgules
             $category_names = [];
@@ -68,7 +69,12 @@ function load_more_photos_ajax() {
                 if ($home_image_url) {
                     // Génère le code HTML pour chaque image avec les attributs data
                     echo '<div class="homePhoto-item">';
-                    echo '<img class="lightbox-target" src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '" data-fullsize="' . esc_url($home_photographie['url']) . '" data-category="' . esc_attr($category_list) . '" data-reference="' . esc_attr($reference) . '">';
+                    echo '<img class="lightbox-target" src="' . esc_url($home_image_url) . '"
+                                                       alt="' . esc_attr(get_the_title()) . '"
+                                                       data-fullsize="' . esc_url($home_photographie['url']) . '"
+                                                       data-category="' . esc_attr($category_list) . '"
+                                                       data-reference="' . esc_attr($reference) . '"
+                                                       data-link="' . esc_url($post_link) . '">';
                     echo '</div>';
                 }
             }
