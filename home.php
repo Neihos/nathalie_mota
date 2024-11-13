@@ -13,6 +13,7 @@ get_header();
 
 // Inclure le fichier avec les données photo
 include('template_parts/home_photos.php');
+get_template_part( 'template_parts/template/lightbox' );
 ?>
 
 <div class="main-container">

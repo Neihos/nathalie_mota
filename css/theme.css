@@ -561,13 +561,13 @@
   margin: 20px auto;
   justify-content: center;
 }
-.homePhotos .photoContainer .homePhoto-item a {
+.homePhotos .photoContainer .homePhoto-item {
   display: flex;
   aspect-ratio: 564/495;
   width: clamp(19.5rem, 1.5rem + 37.5vw, 35.25rem);
   height: auto;
 }
-.homePhotos .photoContainer .homePhoto-item a img {
+.homePhotos .photoContainer .homePhoto-item img {
   width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
@@ -716,7 +716,7 @@
     flex-direction: column;
     padding: 0 29px;
   }
-  .homePhotos .photoContainer .homePhoto-item a {
+  .homePhotos .photoContainer .homePhoto-item {
     width: 100%;
     height: clamp(17.438rem, -3.07rem + 87.5vw, 38.875rem);
   }
@@ -734,6 +734,107 @@
     flex-direction: column;
   }
 }
+#lightboxOverlay {
+  display: flex;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 12px;
+}
+#lightboxOverlay #lightboxContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+#lightboxOverlay #lightboxContainer .lightboxTop {
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 25px;
+  justify-content: flex-end;
+  margin-right: 7%;
+  top: 7%;
+  z-index: 12;
+}
+#lightboxOverlay #lightboxContainer .lightboxTop #lightboxClose {
+  cursor: pointer;
+}
+#lightboxOverlay #lightboxContainer .lightboxGlobal {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+#lightboxOverlay #lightboxContainer .lightboxGlobal .arrowLightbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+#lightboxOverlay #lightboxContainer .lightboxGlobal .arrowLightbox img {
+  width: 25px;
+}
+#lightboxOverlay #lightboxContainer .lightboxGlobal .arrowLightbox p {
+  color: white;
+  font-family: "Space Mono";
+  font-size: 12px;
+  font-weight: 400;
+  cursor: pointer;
+}
+#lightboxOverlay #lightboxContainer .lightboxGlobal .arrowLightbox:hover img {
+  width: 34px;
+}
+#lightboxOverlay #lightboxContainer .lightboxGlobal .arrowLightbox:hover p {
+  font-weight: 700;
+}
+
+.lightboxDisplayImg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  max-width: 70%;
+  margin: 0 10px;
+}
+.lightboxDisplayImg img {
+  max-width: 100%;
+  width: auto;
+  max-height: 100%;
+  height: auto;
+}
+.lightboxDisplayImg .lightboxLink {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  height: 4%;
+  padding-top: 15px;
+}
+.lightboxDisplayImg .lightboxLink p {
+  color: white;
+  font-size: 14px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}
+
+.showNow {
+  display: none !important;
+}
+
 body {
   max-width: 1440px;
   height: 100%;

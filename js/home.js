@@ -2,10 +2,11 @@
 //                                                 La page d'accueil
 // =================================================================================================================
 
-// Bouton charger plus de photos
-
 jQuery(document).ready(function ($) {
-  let page = 2; // Commence à la page 2, car la première page est déjà chargée
+  // -----> Bouton charger plus de photos <-----
+
+  // Variables de pagination et de chargement
+  let page = 2; // Commence à la page 2, la première étant déjà chargée
   let loading = false; // Empêche le chargement multiple
 
   // Variables pour le tri
@@ -19,7 +20,7 @@ jQuery(document).ready(function ($) {
       loading = true;
 
       $.ajax({
-        url: natmota_js.ajax_url, // URL définie dans la localisation
+        url: natmota_js.ajax_url,
         type: "POST",
         data: {
           action: "load_more_photos",
@@ -36,50 +37,48 @@ jQuery(document).ready(function ($) {
             );
             $("#loadMorePhotos").prop("disabled", true);
           } else {
-            // Ajoute les nouvelles photos à la fin du conteneur
+            // Ajout des nouvelles photos
             $(".photoContainer").append(response);
-            page++; // Incrémente le numéro de page pour la prochaine requête
-            loading = false; // Permet un nouveau chargement
+            page++; // Incrémente pour la prochaine requête
+            loading = false; // Réinitialise l'état de chargement
           }
         },
       });
     }
   });
 
-  // Met à jour les variables de tri quand l'utilisateur sélectionne un format
+  // -----> Action avec les filtres <-----
+
+  // Mise à jour du tri par format
   $("#formats").on("change", function () {
     selectedFormat = $(this).val();
-    page = 2; // Réinitialise la page pour charger les résultats du début
-    $(".photoContainer").empty(); // Vide le conteneur des photos
-    $("#loadMorePhotos").prop("disabled", false);
-    $("#loadMorePhotos").html("Charger plus");
-    loadPhotos(); // Recharge les photos en fonction des nouveaux filtres
+    resetAndLoadPhotos();
   });
 
-  // Met à jour les variables de tri quand l'utilisateur sélectionne une catégorie
+  // Mise à jour du tri par catégorie
   $("#categories").on("change", function () {
     selectedCategory = $(this).val();
-    page = 2; // Réinitialise la page pour charger les résultats du début
-    $(".photoContainer").empty(); // Vide le conteneur des photos
-    $("#loadMorePhotos").prop("disabled", false);
-    $("#loadMorePhotos").html("Charger plus");
-    loadPhotos(); // Recharge les photos en fonction des nouveaux filtres
+    resetAndLoadPhotos();
   });
 
-  // Met à jour les variables de tri quand l'utilisateur sélectionne un mode de tri
+  // Mise à jour du tri par mode
   $("#trie").on("change", function () {
     selectedSort = $(this).val();
-    page = 2; // Réinitialise la page pour charger les résultats du début
-    $(".photoContainer").empty(); // Vide le conteneur des photos
-    $("#loadMorePhotos").prop("disabled", false);
-    $("#loadMorePhotos").html("Charger plus");
-    loadPhotos(); // Recharge les photos en fonction des nouveaux filtres
+    resetAndLoadPhotos();
   });
 
-  // Fonction pour charger les photos en fonction des filtres
+  // Fonction pour réinitialiser et charger les photos
+  function resetAndLoadPhotos() {
+    page = 2;
+    $(".photoContainer").empty();
+    $("#loadMorePhotos").prop("disabled", false).html("Charger plus");
+    loadPhotos(); // Recharge les photos selon les nouveaux filtres
+  }
+
+  // Fonction pour charger les photos avec les filtres
   function loadPhotos() {
     $.ajax({
-      url: natmota_js.ajax_url, // URL définie dans la localisation
+      url: natmota_js.ajax_url,
       type: "POST",
       data: {
         action: "load_more_photos",
@@ -89,63 +88,71 @@ jQuery(document).ready(function ($) {
         sort: selectedSort,
       },
       success: function (response) {
-        if (response == 0) {
-          $(".photoContainer").html("<p>Aucune photo disponible.</p>");
-        } else {
-          $(".photoContainer").html(response);
-        }
+        $(".photoContainer").html(
+          response == 0 ? "<p>Aucune photo disponible.</p>" : response
+        );
       },
     });
   }
 
-  // ----->  Récupère les termes des taxonomies pour renseigner les champs de tri  <-----
+  // -----> Récupère les termes des taxonomies pour remplir les champs de tri <-----
 
-  // Récupère les termes de la taxonomie "format"
-  $.ajax({
-    url: natmota_js.rest_url + "format",
-    type: "GET",
-    success: function (response) {
-      if (Array.isArray(response)) {
-        $("#formats").empty();
-        // Ajoute une option par défaut pour inclure tous les formats
-        $("#formats").append(`<option value="">Formats</option>`);
-        response.forEach((term) => {
-          $("#formats").append(
-            `<option value="${term.slug}">${term.name}</option>`
-          );
-        });
-      } else {
-        console.error("Unexpected response structure:", response);
-      }
-    },
-    error: function (error) {
-      console.error("Error fetching formats:", error);
-    },
+  // Récupération des formats
+  fetchTaxonomyTerms("format", "#formats", "Formats");
+
+  // Récupération des catégories
+  fetchTaxonomyTerms("categorie", "#categories", "Catégories");
+
+  function fetchTaxonomyTerms(taxonomy, selector, defaultOption) {
+    $.ajax({
+      url: `${natmota_js.rest_url}${taxonomy}`,
+      type: "GET",
+      success: function (response) {
+        if (Array.isArray(response)) {
+          $(selector)
+            .empty()
+            .append(`<option value="">${defaultOption}</option>`);
+          response.forEach((term) => {
+            $(selector).append(
+              `<option value="${term.slug}">${term.name}</option>`
+            );
+          });
+        } else {
+          console.error("Unexpected response structure:", response);
+        }
+      },
+      error: function (error) {
+        console.error(`Error fetching ${taxonomy}:`, error);
+      },
+    });
+  }
+
+  // -----> Initialisation de Select2 et personnalisation des filtres <-----
+
+  $(".js-example-basic-multiple").select2({
+    minimumResultsForSearch: Infinity, // Désactive la recherche
+    dropdownAutoClose: "outsideClick", // Ferme au clic extérieur
   });
 
-  // Récupère les termes de la taxonomie "categorie"
-  $.ajax({
-    url: natmota_js.rest_url + "categorie",
-    type: "GET",
-    success: function (response) {
-      if (Array.isArray(response)) {
-        $("#categories").empty();
-        // Ajoute une option par défaut pour inclure toutes les catégories
-        $("#categories").append(
-          `<option value="">Catégories</option>`
-        );
-        response.forEach((term) => {
-          $("#categories").append(
-            `<option value="${term.slug}">${term.name}</option>`
-          );
-        });
-      } else {
-        console.error("Unexpected response structure:", response);
-      }
-    },
-    error: function (error) {
-      console.error("Error fetching categories:", error);
-    },
+  // Gestion des événements d'ouverture et fermeture du Select2
+  $(".js-example-basic-multiple")
+    .on("select2:open", function () {
+      $(this)
+        .next(".select2-container")
+        .find(".select2-selection__arrow b")
+        .addClass("select2-arrow-rotated");
+    })
+    .on("select2:close", function () {
+      $(this)
+        .next(".select2-container")
+        .find(".select2-selection__arrow b")
+        .removeClass("select2-arrow-rotated");
+    });
+
+  // Ferme Select2 si clic en dehors du conteneur
+  $(document).on("click", function (e) {
+    if (!$(e.target).closest(".select2-container").length) {
+      $(".js-example-basic-multiple").select2("close");
+    }
   });
 });
-

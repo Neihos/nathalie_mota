@@ -17,7 +17,7 @@ function get_random_photo() {
             $random_photo_query->the_post();
             $random_photographie = get_field('photographie');
             if (!empty($random_photographie['sizes'])) {
-                $random_image_url = $random_photographie['sizes']['full'] ?? $random_photographie['sizes']['large'] ?? $random_photographie['sizes']['medium'] ?? $random_photographie['sizes']['thumbnail'] ?? $random_photographie['url'];
+                $random_image_url = $random_photographie['url'] ?? $random_photographie['sizes']['full'] ?? $random_photographie['sizes']['large'] ?? $random_photographie['sizes']['medium'] ?? $random_photographie['sizes']['thumbnail'] ?? $random_photographie['url'];
                 wp_reset_postdata();
                 return esc_url($random_image_url);
             }
@@ -40,12 +40,22 @@ function photoDisplay_event() {
 
     $photos_html = ''; // Variable pour stocker le code HTML des images
     $displayed_images = []; // Tableau pour stocker les URLs des images déjà affichées
-    $item_post_url = ""; // Variable pour stocker les URLs des posts 
 
     if ($home_photo_query->have_posts()) {
         while ($home_photo_query->have_posts()) {
             $home_photo_query->the_post();
             $home_photographie = get_field('photographie');
+            $reference = get_field('reference'); // Récupère la référence via ACF
+            $categories = get_the_terms(get_the_ID(), 'categorie'); // Récupère la catégorie
+
+            // Convertit les catégories en une liste séparée par des virgules
+            $category_names = [];
+            if ($categories && !is_wp_error($categories)) {
+                foreach ($categories as $cat) {
+                    $category_names[] = $cat->name;
+                }
+            }
+            $category_list = implode(', ', $category_names);
 
             if (!empty($home_photographie['sizes'])) {
                 // Sélectionne la meilleure qualité disponible
@@ -60,11 +70,9 @@ function photoDisplay_event() {
                     // Ajoute l'URL de l'image au tableau des images affichées
                     $displayed_images[] = $home_image_url;
 
-                    // Crée le code HTML pour chaque image
+                    // Crée le code HTML pour chaque image avec les attributs data
                     $photos_html .= '<div class="homePhoto-item">';
-                    $photos_html .= '<a href=" ' . get_permalink(get_the_ID()) . '" target="">'; // Récupère l'URL du post
-                    $photos_html .= '<img src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '">';
-                    $photos_html .= '</a>';
+                    $photos_html .= '<img class="lightbox-target" src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '" data-fullsize="' . esc_url($home_photographie['url']) . '" data-category="' . esc_attr($category_list) . '" data-reference="' . esc_attr($reference) . '">';
                     $photos_html .= '</div>';
                 }
             }

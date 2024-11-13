@@ -1,5 +1,4 @@
 <?php
-// Ajoute la fonction Ajax pour la pagination infinie
 function load_more_photos_ajax() {
     // Vérifie la page de la requête Ajax
     $paged = (isset($_POST['page'])) ? $_POST['page'] : 2;
@@ -46,6 +45,17 @@ function load_more_photos_ajax() {
         while ($home_photo_query->have_posts()) {
             $home_photo_query->the_post();
             $home_photographie = get_field('photographie');
+            $reference = get_field('reference'); // Récupère la référence via ACF
+            $categories = get_the_terms(get_the_ID(), 'categorie'); // Récupère la catégorie
+
+            // Convertit les catégories en une liste séparée par des virgules
+            $category_names = [];
+            if ($categories && !is_wp_error($categories)) {
+                foreach ($categories as $cat) {
+                    $category_names[] = $cat->name;
+                }
+            }
+            $category_list = implode(', ', $category_names);
 
             if (!empty($home_photographie['sizes'])) {
                 // Sélectionne la meilleure qualité disponible
@@ -56,11 +66,9 @@ function load_more_photos_ajax() {
                                   $home_photographie['url'];
 
                 if ($home_image_url) {
-                    // Génère le code HTML pour chaque image
+                    // Génère le code HTML pour chaque image avec les attributs data
                     echo '<div class="homePhoto-item">';
-                    echo '<a href=" ' . get_permalink(get_the_ID()) . '" target="">';
-                    echo '<img src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '">';
-                    echo '</a>';
+                    echo '<img class="lightbox-target" src="' . esc_url($home_image_url) . '" alt="' . esc_attr(get_the_title()) . '" data-fullsize="' . esc_url($home_photographie['url']) . '" data-category="' . esc_attr($category_list) . '" data-reference="' . esc_attr($reference) . '">';
                     echo '</div>';
                 }
             }
@@ -75,6 +83,4 @@ function load_more_photos_ajax() {
 
 add_action('wp_ajax_load_more_photos', 'load_more_photos_ajax');
 add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos_ajax'); // Permet l'accès aux utilisateurs non connectés
-
-
 ?>

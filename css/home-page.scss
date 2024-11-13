@@ -34,7 +34,7 @@
     width: 100%;
     margin: 20px auto;
     justify-content: center;
-    .homePhoto-item a {
+    .homePhoto-item {
       display: flex;
       aspect-ratio: 564 / 495;
       width: clamp(19.5rem, 1.5rem + 37.5vw, 35.25rem);
@@ -213,7 +213,7 @@
   .homePhotos .photoContainer {
     flex-direction: column;
     padding: 0 29px;
-    .homePhoto-item a {
+    .homePhoto-item {
       width: 100%;
       height: clamp(17.438rem, -3.07rem + 87.5vw, 38.875rem);
     }
