@@ -1,6 +1,6 @@
 <?php
 // =================================================================================================================
-//                                                    Page home 
+//                                                    Parts for home page
 // =================================================================================================================
 
 // ----->  Donne une image aléatoire au hero header  <-----
@@ -73,14 +73,14 @@ function photoDisplay_event() {
                     $displayed_images[] = $home_image_url;
 
                     // Crée le code HTML pour chaque image avec les attributs data
-                    $photos_html .= '<div class="homePhoto-item">';
+                    $photos_html .= '<section class="homePhoto-item">';
                     $photos_html .= '<img class="lightbox-target"  src="' . esc_url($home_image_url) . '"
                                                                    alt="' . esc_attr(get_the_title()) . '" 
                                                                    data-fullsize="' . esc_url($home_photographie['url']) . '" 
                                                                    data-category="' . esc_attr($category_list) . '" 
                                                                    data-reference="' . esc_attr($reference) . '" 
                                                                    data-link="' . esc_url($post_link) . '">';
-                    $photos_html .= '</div>';
+                    $photos_html .= '</section>';
                 }
             }
         }

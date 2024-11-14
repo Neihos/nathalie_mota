@@ -1,0 +1,140 @@
+// Pour cacher la popup initialement (modale cachée au chargement)
+.hiddenPopup {
+  display: none;  // Cache la popup
+  visibility: hidden;  // Assure qu'elle n'est pas visible
+}
+
+// Gestion de l'overlay (l'arrière-plan sombre de la modale)
+.popup-overlay {
+  position: fixed;  // Positionnement fixe par rapport à la fenêtre
+  width: 100%;  
+  height: 100%; 
+  background: rgba(0, 0, 0, 0.8);  // Fond sombre avec transparence
+  display: flex; 
+  justify-content: center;  
+  align-items: center;  
+  top: 0;  
+  left: 0;  
+  z-index: 999;  // Garantit que la modale sera au-dessus du reste du contenu
+
+  // Gestion de l'ensemble de la modale
+  .popup-contact {
+    position: relative;  // Position relative pour l'élément enfant
+    background: white;  
+    width: 597px;  
+    height: 769px;  
+    overflow-y: auto;  // Permet de défiler verticalement si nécessaire
+    overflow-x: hidden;  // Cache tout débordement horizontal
+    border: 5px solid #000000;  
+
+    // Gestion de la zone d'en-tête avec l'image
+    .popup-title {
+      display: flex;  
+      width: 593px;  
+      justify-content: center;  
+      padding-top: 15px;
+
+      .popup-img {
+        width: 100%;
+        object-fit: contain;  // Maintient les proportions de l'image tout en remplissant l'espace
+      }
+    }
+  }
+}
+
+// Gestion de la partie formulaire dans la modale
+#wpcf7-f70-o1 {
+  padding-top: 30px;
+}
+
+// Conteneur des informations du formulaire (texte, champs)
+.popup-informations {
+  display: flex;  
+  flex-direction: column;  
+  width: 100%;  
+  align-items: center;
+  justify-content: center;  
+
+  p {
+    width: 100%;  
+    display: flex;  
+    flex-direction: column;  
+    align-items: center;  
+    margin: 1.1rem 0 0 0;  // Espace au-dessus des paragraphes
+  }
+}
+
+// Cacher l'option vide du menu déroulant
+#menu-ref-photo select option[value=""] {
+  display: none;  
+}
+
+// Styles pour les champs de saisie et les zones de texte du formulaire
+.inputPopup,
+.textareaPopup {
+  width: 263px;  // Largeur des champs
+  height: 40px;  // Hauteur des champs
+  border-radius: 8px;  
+  border: 1px solid rgba(184, 187, 194, 1);  
+  background-color: rgba(255, 255, 255, 1);  
+}
+
+// Zone de texte avec une hauteur plus grande
+.textareaPopup {
+  height: 210px;  
+}
+
+// Styles pour le bouton de soumission du formulaire
+.popup-contact input[type="submit"] {
+  background: rgba(216, 216, 216, 1);  
+  border-radius: 2px;  
+  width: 263px;  
+  height: 50px;  
+  border: none;  
+  box-shadow: none;  
+}
+
+// Réponse du formulaire, on enlève la marge par défaut
+.wpcf7 form .wpcf7-response-output {
+  margin: 0;  // Supprimer la marge par défaut autour de la réponse
+}
+
+// Media queries pour les écrans plus petits (mobile)
+@media (max-width: 767px) {
+  .popup-overlay {
+    .popup-contact {
+      max-width: 286px;  // Réduit la largeur de la modale sur mobile
+      height: 583px;  
+      border: 3px solid #000000;  
+
+      .popup-title {
+        width: 286px;  // Largeur de l'en-tête ajustée à la modale mobile
+      }
+    }
+  }
+
+  #wpcf7-f70-o1 {
+    padding-top: 0px;  // Supprimer l'espace au-dessus du formulaire sur mobile
+  }
+
+  .popup-informations p {
+    margin: 0.7rem 0 0 0;  // Réduire la marge entre les paragraphes
+    padding: 0 2.8rem;  // Ajouter un peu de padding horizontal pour les petits écrans
+  }
+
+  .inputPopup,
+  .textareaPopup {
+    width: 190px;  // Réduire la largeur des champs sur mobile
+    height: 40px;  // Garder la hauteur constante
+  }
+
+  .textareaPopup {
+    height: 149px;  // Ajuster la hauteur de la zone de texte sur mobile
+  }
+
+  .popup-contact input[type="submit"] {
+    width: 190px;  
+    margin-top: 10px;  // Espacement supplémentaire au-dessus du bouton
+    margin-bottom: 0px; 
+  }
+}

@@ -1,5 +1,5 @@
 // =================================================================================================================
-//                                                 La page d'accueil
+//                                                 Home page
 // =================================================================================================================
 
 jQuery(document).ready(function ($) {
@@ -28,6 +28,7 @@ jQuery(document).ready(function ($) {
           format: selectedFormat,
           category: selectedCategory,
           sort: selectedSort,
+          security: natmota_js.nonce,
         },
         success: function (response) {
           if (response == 0) {
@@ -83,6 +84,7 @@ jQuery(document).ready(function ($) {
       data: {
         action: "load_more_photos",
         page: 1,
+        security: natmota_js.nonce,
         format: selectedFormat,
         category: selectedCategory,
         sort: selectedSort,

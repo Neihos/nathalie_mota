@@ -1,6 +1,6 @@
-  // =================================================================================================================
-  //                                                    La modale
-  // =================================================================================================================
+// =================================================================================================================
+//                                                    The modal
+// =================================================================================================================
 
 //  ---->  Sélection des boutons de contact et de l'overlay de la popup  <----
 const contactButtons = [
@@ -39,21 +39,24 @@ document.addEventListener("DOMContentLoaded", modalLoading);
 
 // Démarrage de jQuery
 jQuery(document).ready(function ($) {
-
-//  ----->  Récupérer la référence des photos pour la modale  <-----
+  //  ----->  Récupérer la référence des photos pour la modale  <-----
   const ref = $(".reference");
 
-  function getRef_event() {
-    if (ref.length) {
-      // Vérifie si l'élément existe
-      // Récupère le texte entier, puis extrait uniquement la valeur après "Référence : "
-      const referenceText = ref.text().trim();
-      const referenceValue = referenceText.replace("Référence : ", "").trim();
+  // Vérifier si le type de post est 'photo'
+  if ($("body").hasClass("single-photo")) {
+    // Vérifie la présence de la classe 'single-photo' sur le body
+    function getRef_event() {
+      if (ref.length) {
+        // Vérifie si l'élément existe
+        // Récupère le texte entier, puis extrait uniquement la valeur après "Référence : "
+        const referenceText = ref.text().trim();
+        const referenceValue = referenceText.replace("Référence : ", "").trim();
 
-      // Insère uniquement la valeur extraite dans le champ
-      $("#menu-ref-photo").val(referenceValue);
+        // Insère uniquement la valeur extraite dans le champ
+        $("#menu-ref-photo").val(referenceValue);
+      }
     }
+    getRef_event();
   }
-  getRef_event();
-  });
+});
 

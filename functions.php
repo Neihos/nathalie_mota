@@ -1,7 +1,6 @@
-<?php 
-
+<?php
 // Inclure le fichier des fonctions API REST
-include get_template_directory() . '/include/functions_api_rest.php';
+include get_template_directory() . '/include/ajax.php';
 
 // Enregistrement des styles CSS du thème avec filemtime pour contrôler le cache
 function natmota_enqueue_styles() {

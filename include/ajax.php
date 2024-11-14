@@ -1,7 +1,16 @@
 <?php
+// =================================================================================================================
+//                                              Custom AJAX Functions
+// =================================================================================================================
+
 function load_more_photos_ajax() {
+    // Jeton temporaire de sécurité
+    if (!isset($_POST['security']) || !wp_verify_nonce($_POST['security'], 'natmota-script-main')) {
+    wp_send_json_error('Requête non sécurisée', 403);
+}
+
     // Vérifie la page de la requête Ajax
-    $paged = (isset($_POST['page'])) ? $_POST['page'] : 2;
+    $paged = (isset($_POST['page'])) ? intval($_POST['page']) : 2;
     $format = isset($_POST['format']) ? sanitize_text_field($_POST['format']) : '';
     $category = isset($_POST['category']) ? sanitize_text_field($_POST['category']) : '';
     $sort = isset($_POST['sort']) ? sanitize_text_field($_POST['sort']) : '';
