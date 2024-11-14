@@ -82,7 +82,7 @@
      object-fit: cover;
 }
 .navBar .logoSite img:hover {
-  animation: zoomIn 0.5s ease forwards;
+  animation: bounce 0.5s ease forwards;
 }
 
 #menu-menu-principale {
@@ -194,7 +194,7 @@
     gap: 2rem;
   }
 }
-@keyframes zoomIn {
+@keyframes bounce {
   0% {
     transform: scale(1, 1);
     letter-spacing: normal;
@@ -206,6 +206,76 @@
   100% {
     transform: scale(1, 1);
     letter-spacing: normal;
+  }
+}
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes ZoomIn {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 .hiddenPopup {
@@ -353,6 +423,7 @@
   padding-bottom: 35px;
   line-height: 2.5;
   font-size: 14px;
+  animation: fadeInDown 2s ease;
 }
 .preview-photo .photoOnTop .single-content .post-title {
   width: clamp(18.75rem, 10.1786rem + 17.8571vw, 26.25rem);
@@ -365,6 +436,7 @@
   display: flex;
   align-items: end;
   width: 100%;
+  animation: ZoomIn 1s ease;
 }
 .preview-photo .photoOnTop .preview__picture img {
   width: 100%;
@@ -459,6 +531,7 @@
   flex: 1;
   max-width: calc((100% - 20px) / 2);
   aspect-ratio: 564/495;
+  animation: fadeInUp 1.5s ease;
 }
 .likeToo .containerLikeToo .photoLikeToo img {
   width: 100%;
@@ -504,6 +577,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 10px 29px;
+    animation: ZoomIn 1s ease;
   }
   .likeToo h3 {
     text-align: center;
@@ -537,6 +611,7 @@
   background-size: cover;
   background-position: center;
   margin: 0;
+  animation: fadeInDown 2s ease-in-out;
 }
 .hero_header h1 {
   font-weight: 700;
@@ -560,6 +635,12 @@
   width: 100%;
   margin: 20px auto;
   justify-content: center;
+}
+.homePhotos .photoContainer > :nth-child(odd) {
+  animation: fadeInLeft 2s ease;
+}
+.homePhotos .photoContainer > :nth-child(even) {
+  animation: fadeInRight 2s ease;
 }
 .homePhotos .photoContainer .homePhoto-item {
   display: flex;
@@ -734,6 +815,10 @@
     flex-direction: column;
   }
 }
+.updating-content {
+  visibility: hidden; /* Cache le contenu sans provoquer de défilement */
+}
+
 /* --- Lightbox Overlay --- */
 #lightboxOverlay {
   display: flex;

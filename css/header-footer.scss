@@ -16,7 +16,7 @@
     img {
       object-fit: cover;
       &:hover {
-        animation: zoomIn 0.5s ease forwards;
+        animation: bounce 0.5s ease forwards;
       }
     }
   }

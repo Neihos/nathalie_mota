@@ -1,4 +1,5 @@
-@keyframes zoomIn {
+// Effet de zoom et retour à la normal
+@keyframes bounce {
   0% {
     transform: scale(1, 1);
     letter-spacing: normal;
@@ -13,4 +14,68 @@
     transform: scale(1, 1);
     letter-spacing: normal;
   }
+}
+
+// Gérer l'opacité
+@mixin opa {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Effet Fade in : up and down
+
+@keyframes fadeInDown {
+  0% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+  @include opa;
+}
+
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+  @include opa;
+}
+
+// Effet Fade in : right and left
+
+@keyframes fadeInLeft {
+  0% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+  @include opa;
+}
+
+@keyframes fadeInRight {
+  0% {
+    transform: translateX(50px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+  @include opa;
+}
+
+@keyframes ZoomIn {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+  @include opa;
 }

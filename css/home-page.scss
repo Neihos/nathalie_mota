@@ -12,6 +12,7 @@
   background-size: cover;
   background-position: center;
   margin: 0;
+  animation: fadeInDown 2s ease-in-out;
   h1 {
     font-weight: 700;
     font-size: clamp(4rem, 1.714rem + 4.762vw, 6rem);
@@ -34,11 +35,19 @@
     width: 100%;
     margin: 20px auto;
     justify-content: center;
+    & > :nth-child(odd) {
+      animation: fadeInLeft 2s ease;
+    }
+
+    & > :nth-child(even) {
+      animation: fadeInRight 2s ease;
+    }
     .homePhoto-item {
       display: flex;
       aspect-ratio: 564 / 495;
       width: clamp(19.5rem, 1.5rem + 37.5vw, 35.25rem);
       height: auto;
+
       img {
         width: 100%;
         object-fit: cover;
@@ -232,4 +241,8 @@
       }
     }
   }
+}
+
+.updating-content {
+  visibility: hidden; /* Cache le contenu sans provoquer de défilement */
 }

@@ -51,27 +51,29 @@ jQuery(document).ready(function ($) {
   // -----> Action avec les filtres <-----
 
   // Mise à jour du tri par format
-  $("#formats").on("change", function () {
-    selectedFormat = $(this).val();
-    resetAndLoadPhotos();
-  });
+$("#formats").on("change", function (event) {
+  event.preventDefault(); // Empêche le repositionnement de la page
+  selectedFormat = $(this).val();
+  resetAndLoadPhotos();
+});
 
-  // Mise à jour du tri par catégorie
-  $("#categories").on("change", function () {
-    selectedCategory = $(this).val();
-    resetAndLoadPhotos();
-  });
+$("#categories").on("change", function (event) {
+  event.preventDefault();
+  selectedCategory = $(this).val();
+  resetAndLoadPhotos();
+});
 
-  // Mise à jour du tri par mode
-  $("#trie").on("change", function () {
-    selectedSort = $(this).val();
-    resetAndLoadPhotos();
-  });
+$("#trie").on("change", function (event) {
+  event.preventDefault();
+  selectedSort = $(this).val();
+  resetAndLoadPhotos();
+});
+
 
   // Fonction pour réinitialiser et charger les photos
   function resetAndLoadPhotos() {
     page = 2;
-    $(".photoContainer").empty();
+    $(".photoContainer").addClass("updating-content"); // Ajout d'une classe pour cacher le contenu
     $("#loadMorePhotos").prop("disabled", false).html("Charger plus");
     loadPhotos(); // Recharge les photos selon les nouveaux filtres
   }
@@ -93,6 +95,7 @@ jQuery(document).ready(function ($) {
         $(".photoContainer").html(
           response == 0 ? "<p>Aucune photo disponible.</p>" : response
         );
+        $(".photoContainer").removeClass("updating-content"); // Retire la classe pour réafficher le contenu
       },
     });
   }
