@@ -39,7 +39,7 @@
       display: flex;
       align-items: end;
       width: 100%;
-      animation: ZoomIn 1s ease;
+      animation: zoomIn 1s ease;
       img {
         width: 100%;
         height: auto;
@@ -184,7 +184,7 @@
     flex-direction: column;
     justify-content: center;
     padding: 10px 29px;
-    animation: ZoomIn 1s ease;
+    animation: zoomIn 1s ease;
     h3 {
       text-align: center;
     }

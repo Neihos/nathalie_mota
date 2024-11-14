@@ -12,6 +12,7 @@
   align-items: center;
   flex-direction: column;
   font-size: 12px;
+  animation: zoomIn2 0.2s ease-in-out;
 
   /* Conteneur de la Lightbox */
   #lightboxContainer {
@@ -145,6 +146,7 @@
   padding: 10px;
   box-sizing: border-box;
   z-index: 10;
+  animation: zoomIn3 0.2s ease-in-out;
 }
 
 /* Afficher l'overlay au survol de l'image */

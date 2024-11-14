@@ -70,12 +70,32 @@
   @include opa;
 }
 
-@keyframes ZoomIn {
+@keyframes zoomIn {
   0% {
     transform: scaleX(0);
   }
   100% {
     transform: scaleX(1);
+  }
+  @include opa;
+}
+
+@keyframes zoomIn2 {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+  @include opa;
+}
+
+@keyframes zoomIn3 {
+  0% {
+    transform: scaleX(0) scaleY(0);
+  }
+  100% {
+    transform: scaleX(1) scaleY(1);
   }
   @include opa;
 }
