@@ -36,7 +36,7 @@
     margin: 20px auto;
     justify-content: center;
     & > :nth-child(odd) {
-      animation: fadeInLeft 2s ease;
+      animation: fadeInLeft 2s ease-in-out;
     }
 
     & > :nth-child(even) {

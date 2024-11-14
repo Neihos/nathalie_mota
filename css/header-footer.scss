@@ -16,16 +16,23 @@
     img {
       object-fit: cover;
       &:hover {
-        animation: bounce 0.5s ease forwards;
+        animation: bounce 0.5s ease;
       }
     }
   }
+}
+
+.menu-menu-principale-container {
+  display: flex;
+  justify-content: center;
+  width: 300px;
 }
 
 #menu-menu-principale {
   display: flex;
   gap: 2rem;
   justify-content: space-between;
+  padding-left: 0;
 }
 
 .burgerMenu {
@@ -87,7 +94,7 @@
 #menu-item-20 a:hover {
   display: inline-block;
   font-weight: 700;
-  animation: zoomIn 0.5s ease forwards;
+  animation: bounce 0.5s ease forwards;
 }
 
 @media (max-width: 767px) {
