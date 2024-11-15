@@ -23,17 +23,18 @@
   }
 }
 
-.menu-menu-principale-container {
+.menu-header-container {
   display: flex;
   justify-content: center;
   width: 300px;
 }
 
-#menu-menu-principale {
+#menu-header {
   display: flex;
   gap: 2rem;
   justify-content: space-between;
   padding-left: 0;
+  list-style: none; // Supprime les puces si nécessaires
 }
 
 .burgerMenu {
@@ -85,9 +86,16 @@
   color: rgba(0, 0, 0, 1);
 }
 
+.menu li span {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+
+#menu-item-2102 span:hover,
 #menu-item-7 a:hover,
 #menu-item-18 a:hover,
-#menu-item-19 a:hover,
 #menu-item-21 a:hover,
 #menu-item-20 a:hover {
   display: inline-block;
@@ -125,16 +133,22 @@
     align-items: center;
     background-color: rgba(224, 0, 0, 1);
     animation: burgerOpen 0.5s ease-in-out forwards;
-
-    #menu-menu-principale-1 {
+    .menu-header-container {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 3vh;
-      padding-left: 0;
-      li a {
-        color: rgba(255, 255, 255, 1);
-        font-size: 2.75rem;
+      justify-content: center;
+      width: 300px;
+
+      #menu-header-1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 3vh;
+        padding-left: 0;
+        li a,
+        li span {
+          color: rgba(255, 255, 255, 1);
+          font-size: 2.75rem;
+        }
       }
     }
   }

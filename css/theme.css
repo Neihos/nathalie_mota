@@ -86,17 +86,18 @@
   animation: bounce 0.5s ease;
 }
 
-.menu-menu-principale-container {
+.menu-header-container {
   display: flex;
   justify-content: center;
   width: 300px;
 }
 
-#menu-menu-principale {
+#menu-header {
   display: flex;
   gap: 2rem;
   justify-content: space-between;
   padding-left: 0;
+  list-style: none;
 }
 
 .burgerMenu {
@@ -146,9 +147,16 @@
   color: rgb(0, 0, 0);
 }
 
+.menu li span {
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+#menu-item-2102 span:hover,
 #menu-item-7 a:hover,
 #menu-item-18 a:hover,
-#menu-item-19 a:hover,
 #menu-item-21 a:hover,
 #menu-item-20 a:hover {
   display: inline-block;
@@ -184,14 +192,20 @@
     background-color: rgb(224, 0, 0);
     animation: burgerOpen 0.5s ease-in-out forwards;
   }
-  .burger-menu #menu-menu-principale-1 {
+  .burger-menu .menu-header-container {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+  }
+  .burger-menu .menu-header-container #menu-header-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 3vh;
     padding-left: 0;
   }
-  .burger-menu #menu-menu-principale-1 li a {
+  .burger-menu .menu-header-container #menu-header-1 li a,
+  .burger-menu .menu-header-container #menu-header-1 li span {
     color: rgb(255, 255, 255);
     font-size: 2.75rem;
   }
