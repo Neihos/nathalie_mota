@@ -12,7 +12,7 @@
   background-size: cover;
   background-position: center;
   margin: 0;
-  animation: fadeInDown 2s ease-in-out;
+  animation: zoomIn3 1s ease-in-out;
   h1 {
     font-weight: 700;
     font-size: clamp(4rem, 1.714rem + 4.762vw, 6rem);
@@ -40,7 +40,7 @@
     }
 
     & > :nth-child(even) {
-      animation: fadeInRight 2s ease;
+      animation: fadeInRight 2s ease-in-out;
     }
     .homePhoto-item {
       display: flex;

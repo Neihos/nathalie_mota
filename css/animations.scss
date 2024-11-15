@@ -52,20 +52,20 @@
 
 @keyframes fadeInLeft {
   0% {
-    transform: translateX(-50px);
+    transform: translateX(-50px) translateY(50px);
   }
   100% {
-    transform: translateX(0px);
+    transform: translateX(0px) translateY(0px);
   }
   @include opa;
 }
 
 @keyframes fadeInRight {
   0% {
-    transform: translateX(50px);
+    transform: translateX(50px) translateY(50px);
   }
   100% {
-    transform: translateX(0px);
+    transform: translateX(0px) translateY(0px);;
   }
   @include opa;
 }
@@ -98,4 +98,13 @@
     transform: scaleX(1) scaleY(1);
   }
   @include opa;
+}
+
+@keyframes burgerOpen {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: calc(100vh - 80px);
+  }
 }

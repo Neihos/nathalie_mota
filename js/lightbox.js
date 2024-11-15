@@ -20,6 +20,17 @@ function lightboxLoading() {
   const lightboxCategory = document.querySelector(".lightboxCategory");
   const lightboxRef = document.querySelector(".lightboxRef");
 
+  // Fonction pour désactiver le scroll
+  function toggleScroll(enable) {
+    if (enable) {
+      // Permet le scroll
+      document.body.style.overflow = "auto";
+    } else {
+      // Désactive le scroll
+      document.body.style.overflow = "hidden";
+    }
+  }
+
   // Fonction pour charger une image en fonction de l'index
   function loadImageAtIndex(index) {
     const lightboxTargets = Array.from(
@@ -39,6 +50,7 @@ function lightboxLoading() {
     // Vérifie si l'overlay existe et supprime la classe "showNow"
     if (lightboxOverlay) {
       lightboxOverlay.classList.remove("showNow");
+      toggleScroll(false);
     }
   }
 
@@ -94,6 +106,7 @@ function lightboxLoading() {
   if (lightboxOverlay) {
     lightboxClose.addEventListener("click", () => {
       lightboxOverlay.classList.add("showNow"); // Masque la lightbox
+      toggleScroll(true);
     });
   }
 }

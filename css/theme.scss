@@ -16,11 +16,18 @@
 
 @import "lightbox";
 
+html {
+  background-color: #e0e0e0; /* Gris clair, un peu plus foncé */
+}
+
 body {
+  background-color: white;
   max-width: 1440px;
   height: 100%;
   margin: 0 auto;
+  padding: 0;
   font-family: "Space Mono", monospace, Arial, Helvetica, sans-serif;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .main-container {

@@ -8,6 +8,7 @@
   padding: 0 clamp(4.375rem, -1.0536rem + 11.3095vw, 9.125rem);
   margin: 0 auto;
   box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
+  animation: fadeInDown 1s ease;
   .logoSite {
     display: flex;
     width: 216px;
@@ -43,10 +44,6 @@
   display: none;
 }
 
-.open {
-  display: flex;
-}
-
 /**************/
 /*** Footer ***/
 /**************/
@@ -70,6 +67,7 @@
   display: flex;
   gap: 5rem;
   padding: 0;
+  margin: 0;
 }
 
 /************************/
@@ -114,13 +112,20 @@
     cursor: pointer;
   }
 
+  .burger-menu.open {
+    display: flex;
+  }
+
   .burger-menu {
+    display: none;
     position: relative;
     width: 100%;
-    height: calc(100vh - 80px);
+    height: 0;
     justify-content: center;
     align-items: center;
     background-color: rgba(224, 0, 0, 1);
+    animation: burgerOpen 0.5s ease-in-out forwards;
+
     #menu-menu-principale-1 {
       display: flex;
       flex-direction: column;
