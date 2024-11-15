@@ -1,33 +1,17 @@
-// Effet de zoom et retour à la normal
 @keyframes bounce {
   0% {
     transform: scale(1, 1);
     letter-spacing: normal;
   }
-
   50% {
     transform: scale(1.1, 1.1);
     letter-spacing: 1px;
   }
-
   100% {
     transform: scale(1, 1);
     letter-spacing: normal;
   }
 }
-
-// Gérer l'opacité
-@mixin opa {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-// Effet Fade in : up and down
-
 @keyframes fadeInDown {
   0% {
     transform: translateY(-30px);
@@ -35,9 +19,13 @@
   100% {
     transform: translateY(0px);
   }
-  @include opa;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 @keyframes fadeInUp {
   0% {
     transform: translateY(30px);
@@ -45,11 +33,13 @@
   100% {
     transform: translateY(0px);
   }
-  @include opa;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
-// Effet Fade in : right and left
-
 @keyframes fadeInLeft {
   0% {
     transform: translateX(-50px) translateY(50px);
@@ -63,25 +53,33 @@
   100% {
     transform: translateX(0px) translateY(0px);
   }
-  @include opa;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 @keyframes fadeInRight {
   0% {
     transform: translateX(50px) translateY(50px);
   }
   33% {
-    transform: translateX(10px) translateY(10px);;
+    transform: translateX(10px) translateY(10px);
   }
   66% {
     transform: translateX(20px) translateY(20px);
   }
   100% {
-    transform: translateX(0px) translateY(0px);;
+    transform: translateX(0px) translateY(0px);
   }
-  @include opa;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 @keyframes zoomIn {
   0% {
     transform: scaleX(0);
@@ -89,9 +87,13 @@
   100% {
     transform: scaleX(1);
   }
-  @include opa;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 @keyframes zoomIn2 {
   0% {
     transform: scaleY(0);
@@ -99,9 +101,13 @@
   100% {
     transform: scaleY(1);
   }
-  @include opa;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 @keyframes zoomIn3 {
   0% {
     transform: scaleX(0) scaleY(0);
@@ -109,9 +115,13 @@
   100% {
     transform: scaleX(1) scaleY(1);
   }
-  @include opa;
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 @keyframes burgerOpen {
   0% {
     height: 0;
@@ -119,4 +129,4 @@
   100% {
     height: calc(100vh - 80px);
   }
-}
+}/*# sourceMappingURL=animations.css.map */

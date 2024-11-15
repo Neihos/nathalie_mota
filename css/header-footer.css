@@ -9,18 +9,19 @@
   margin: 0 auto;
   box-shadow: 0px 4px 14px 10px rgba(0, 0, 0, 0.03);
   animation: fadeInDown 1s ease;
-  .logoSite {
-    display: flex;
-    width: 216px;
-    height: 14px;
-    align-items: center;
-    img {
-      object-fit: cover;
-      &:hover {
-        animation: bounce 0.5s ease;
-      }
-    }
-  }
+}
+.navBar .logoSite {
+  display: flex;
+  width: 216px;
+  height: 14px;
+  align-items: center;
+}
+.navBar .logoSite img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.navBar .logoSite img:hover {
+  animation: bounce 0.5s ease;
 }
 
 .menu-header-container {
@@ -34,7 +35,7 @@
   gap: 2rem;
   justify-content: space-between;
   padding-left: 0;
-  list-style: none; // Supprime les puces si nécessaires
+  list-style: none;
 }
 
 .burgerMenu {
@@ -48,7 +49,6 @@
 /**************/
 /*** Footer ***/
 /**************/
-
 .motaFooter {
   display: flex;
   max-width: 1440px;
@@ -56,7 +56,7 @@
   height: 40px;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid rgba(0, 0, 0, 1);
+  border-top: 1px solid rgb(0, 0, 0);
 }
 
 .menu-footer-container {
@@ -70,6 +70,7 @@
   padding: 0;
   margin: 0;
 }
+
 #menu-item-1984 span {
   cursor: default;
 }
@@ -77,7 +78,6 @@
 /************************/
 /*** Header et Footer ***/
 /************************/
-
 .menu li {
   list-style: none;
 }
@@ -86,13 +86,13 @@
   text-decoration: none;
   font-size: 1rem;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 1);
+  color: rgb(0, 0, 0);
 }
 
 .menu li span {
   font-size: 1rem;
   text-transform: uppercase;
-  color: rgba(0, 0, 0, 1);
+  color: rgb(0, 0, 0);
   cursor: pointer;
 }
 
@@ -109,24 +109,21 @@
 @media (max-width: 767px) {
   .navBar {
     padding: 0 clamp(2.5rem, 0.706rem + 7.653vw, 4.375rem);
-    .logoSite img {
-      width: clamp(8.625rem, 3.961rem + 19.898vw, 13.5rem);
-    }
+  }
+  .navBar .logoSite img {
+    width: clamp(8.625rem, 3.961rem + 19.898vw, 13.5rem);
   }
   .navDesktop {
     display: none;
   }
-
   .burgerMenu {
     display: block;
     font-size: 28px;
     cursor: pointer;
   }
-
   .burger-menu.open {
     display: flex;
   }
-
   .burger-menu {
     display: none;
     position: relative;
@@ -134,35 +131,32 @@
     height: 0;
     justify-content: center;
     align-items: center;
-    background-color: rgba(224, 0, 0, 1);
+    background-color: rgb(224, 0, 0);
     animation: burgerOpen 0.5s ease-in-out forwards;
-    .menu-header-container {
-      display: flex;
-      justify-content: center;
-      width: 300px;
-
-      #menu-header-1 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3vh;
-        padding-left: 0;
-        li a,
-        li span {
-          color: rgba(255, 255, 255, 1);
-          font-size: 2.75rem;
-        }
-      }
-    }
   }
-
+  .burger-menu .menu-header-container {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+  }
+  .burger-menu .menu-header-container #menu-header-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3vh;
+    padding-left: 0;
+  }
+  .burger-menu .menu-header-container #menu-header-1 li a,
+  .burger-menu .menu-header-container #menu-header-1 li span {
+    color: rgb(255, 255, 255);
+    font-size: 2.75rem;
+  }
   .motaFooter {
     height: 208px;
   }
-
   #menu-footer {
     flex-direction: column;
     align-items: center;
     gap: 2rem;
   }
-}
+}/*# sourceMappingURL=header-footer.css.map */
