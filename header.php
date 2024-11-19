@@ -3,8 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Bienvenue sur le site de Nathalie Mota, photographe professionnelle spécialisée dans la photographie artistique et de portrait. Explorez une galerie unique où l'émotion et l'esthétique se rencontrent à travers des clichés captivants. Que vous soyez à la recherche de portraits, de photos de mariage, ou d'images pour des événements spéciaux, ce site vous invite à découvrir un travail photographique de haute qualité. Nathalie Mota, votre photographe passionnée, vous offre des souvenirs immortalisés à travers son objectif.">
-    <meta name="keywords" content="photographe professionnelle, Nathalie Mota, photographie de portrait, photographie de mariage, photos artistiques, photographie événementielle, photographie de qualité, portrait, photographie créative, photographie numérique, photographie argentique">
+    <meta name="description" content="Bienvenue sur le site de Nathalie Mota, photographe professionnelle spécialisée dans la photographie artistique et de portrait.
+     Explorez une galerie unique où l'émotion et l'esthétique se rencontrent à travers des clichés captivants.
+      Que vous soyez à la recherche de portraits, de photos de mariage, ou d'images pour des événements spéciaux, ce site vous invite à découvrir un travail photographique de haute qualité.
+       Nathalie Mota, votre photographe passionnée, vous offre des souvenirs immortalisés à travers son objectif.">
+    <meta name="keywords" content="photographe professionnelle, Nathalie Mota, photographie de portrait, photographie de mariage, photos artistiques, photographie événementielle, photographie de qualité, portrait,
+     photographie créative, photographie numérique, photographie argentique">
     <meta name="author" content="Nathalie Mota">
     <meta name="title" content="Nathalie Mota - Photographe Professionnelle | Portraits, Mariages et Événements">
     <meta name="robots" content="index, follow">

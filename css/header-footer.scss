@@ -1,3 +1,7 @@
+/**************/
+/*** Header ***/
+/**************/
+
 .navBar {
   display: flex;
   max-width: 1440px;
@@ -34,7 +38,7 @@
   gap: 2rem;
   justify-content: space-between;
   padding-left: 0;
-  list-style: none; // Supprime les puces si nécessaires
+  list-style: none;
 }
 
 .burgerMenu {
@@ -105,6 +109,10 @@
   font-weight: 700;
   animation: bounce 0.5s ease forwards;
 }
+
+/******************/
+/*** Responsive ***/
+/******************/
 
 @media (max-width: 767px) {
   .navBar {
