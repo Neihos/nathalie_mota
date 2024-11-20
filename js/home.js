@@ -9,6 +9,34 @@ jQuery(document).ready(function ($) {
   let selectedCategory = "";
   let selectedSort = "";
 
+  // -----> Récupère les termes des taxonomies pour remplir les champs de tri <-----
+  fetchTaxonomyTerms("format", "#formats", "Formats");
+  fetchTaxonomyTerms("categorie", "#categories", "Catégories");
+
+  function fetchTaxonomyTerms(taxonomy, selector, defaultOption) {
+    $.ajax({
+      url: `${natmota_js.rest_url}${taxonomy}`,
+      type: "GET",
+      success: function (response) {
+        if (Array.isArray(response)) {
+          $(selector)
+            .empty()
+            .append(`<option value="">${defaultOption}</option>`);
+          response.forEach((term) => {
+            $(selector).append(
+              `<option value="${term.slug}">${term.name}</option>`
+            );
+          });
+        } else {
+          console.error("Unexpected response structure:", response);
+        }
+      },
+      error: function (error) {
+        console.error(`Error fetching ${taxonomy}:`, error);
+      },
+    });
+  }
+
   // -----> Action avec les filtres <-----
 
   // Mise à jour du tri par format
@@ -76,34 +104,6 @@ jQuery(document).ready(function ($) {
         console.error(
           "Une erreur s'est produite lors du chargement des photos."
         );
-      },
-    });
-  }
-
-  // -----> Récupère les termes des taxonomies pour remplir les champs de tri <-----
-  fetchTaxonomyTerms("format", "#formats", "Formats");
-  fetchTaxonomyTerms("categorie", "#categories", "Catégories");
-
-  function fetchTaxonomyTerms(taxonomy, selector, defaultOption) {
-    $.ajax({
-      url: `${natmota_js.rest_url}${taxonomy}`,
-      type: "GET",
-      success: function (response) {
-        if (Array.isArray(response)) {
-          $(selector)
-            .empty()
-            .append(`<option value="">${defaultOption}</option>`);
-          response.forEach((term) => {
-            $(selector).append(
-              `<option value="${term.slug}">${term.name}</option>`
-            );
-          });
-        } else {
-          console.error("Unexpected response structure:", response);
-        }
-      },
-      error: function (error) {
-        console.error(`Error fetching ${taxonomy}:`, error);
       },
     });
   }

@@ -17,7 +17,11 @@ function get_random_photo() {
             $random_photo_query->the_post();
             $random_photographie = get_field('photographie');
             if (!empty($random_photographie['sizes'])) {
-                $random_image_url = $random_photographie['url'] ?? $random_photographie['sizes']['full'] ?? $random_photographie['sizes']['large'] ?? $random_photographie['sizes']['medium'] ?? $random_photographie['sizes']['thumbnail'];
+                $random_image_url = $random_photographie['url'] ??
+                                    $random_photographie['sizes']['full'] ?? 
+                                    $random_photographie['sizes']['large'] ?? 
+                                    $random_photographie['sizes']['medium'] ?? 
+                                    $random_photographie['sizes']['thumbnail'];
                 wp_reset_postdata();
                 return esc_url($random_image_url);
             }
