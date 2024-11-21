@@ -114,7 +114,9 @@ function lightboxLoading() {
 // Appelle la fonction une fois le DOM chargé
 document.addEventListener("DOMContentLoaded", lightboxLoading);
 
-// ------> Création de la carte photo <-----
+// =================================================================================================================
+//                                             Création de la carte photo
+// =================================================================================================================
 
 // Fonction pour ajouter l'overlay à chaque photo après chargement
 function addOverlayToPhotos() {
