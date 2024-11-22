@@ -5,30 +5,29 @@
 
 // ----->  Donne une image aléatoire au hero header  <-----
 
+// Fonction pour récupérer une photographie aléatoire
 function get_random_photo() {
     $random_photo_query = new WP_Query(array(
         'post_type' => 'photo',
         'posts_per_page' => 1,
-        'orderby' => 'rand',
+        'orderby' => 'rand', // Trier aléatoirement
     ));
     
     if ($random_photo_query->have_posts()) {
         while ($random_photo_query->have_posts()) {
             $random_photo_query->the_post();
             $random_photographie = get_field('photographie');
-            if (!empty($random_photographie['sizes'])) {
-                $random_image_url = $random_photographie['url'] ??
-                                    $random_photographie['sizes']['full'] ?? 
+            if (!empty($random_photographie)) {
+                $random_image_url = $random_photographie['sizes']['full'] ?? 
                                     $random_photographie['sizes']['large'] ?? 
                                     $random_photographie['sizes']['medium'] ?? 
-                                    $random_photographie['sizes']['thumbnail'];
-                wp_reset_postdata();
-                return esc_url($random_image_url);
+                                    $random_photographie['sizes']['thumbnail'] ?? 
+                                    $random_photographie['url'];
+                return esc_url($random_image_url); // Retourner l'URL de l'image
             }
         }
     }
     wp_reset_postdata();
-    return null;
 }
 
 // ----->  Fonction pour gérer les photos de la page d'accueil  <-----

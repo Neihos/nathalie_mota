@@ -60,6 +60,9 @@
   font-style: italic;
   src: url(/wp-content/themes/nathalie_mota/assets/fonts/Poppins-BoldItalic.ttf);
 }
+/**************/
+/*** Header ***/
+/**************/
 .navBar {
   display: flex;
   max-width: 1440px;
@@ -168,6 +171,9 @@
   animation: bounce 0.5s ease forwards;
 }
 
+/******************/
+/*** Responsive ***/
+/******************/
 @media (max-width: 767px) {
   .navBar {
     padding: 0 clamp(2.5rem, 0.706rem + 7.653vw, 4.375rem);
